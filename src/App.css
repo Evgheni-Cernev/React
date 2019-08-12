@@ -9,15 +9,15 @@
 }
 
 .search {
- outline: none;
- border-radius: 20px;
- margin-right: 12px;
- width: 400px;
- height: 30px;
- margin-bottom: 40px;
- color: rgb(5, 17, 80);
- font-family: Arial, Helvetica, sans-serif;
- padding-left: 20px;
+  outline: none;
+  border-radius: 20px;
+  margin-right: 12px;
+  width: 400px;
+  height: 30px;
+  margin-bottom: 50px;
+  color: rgb(5, 17, 80);
+  font-family: Arial, Helvetica, sans-serif;
+  padding-left: 20px;
 }
 
 
@@ -31,7 +31,8 @@ label {
 }
 
 .cards{
- display: inline-block;
+  display: flex;
+  justify-items: center;
 }
 
 .ava {
@@ -42,10 +43,34 @@ label {
 }
 
 .names {
-  width: 100px;
   color: rgb(216, 184, 184);
   font-family: Arial, Helvetica, sans-serif;
-  margin-right: 20px
+  position: absolute;
+  margin-top: -20px;
 
 }
 
+.more-information {
+  width: 100px;
+  height: 40px;
+  background-color: rgb(32, 47, 61);
+  border: 2px solid lightBlue;
+  border-radius: 60px;
+  color: rgb(188, 143, 143);
+  outline: none;
+  margin-bottom: 40px;
+  margin-left: 30px;
+}
+
+.info {
+  margin-left: 30px;
+  display: inline-grid;
+}
+
+span {
+  color: rgb(216, 184, 184);
+}
+
+a {
+  color: rgb(216, 184, 184);
+}

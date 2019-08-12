@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import  "./App.css"
 import UserInformation from './UserInformation'
+import { BrowserRouter, Route, Link ,Redirect} from "react-router-dom"
 
 class App extends Component {
   constructor(props){
@@ -29,7 +30,8 @@ class App extends Component {
  
   render() {
       let { oldUsers, isLoaded } = this.state
-
+ 
+  
       if(!isLoaded){
         return <div>Loading...</div>;
       } else {
@@ -42,37 +44,58 @@ class App extends Component {
           oldUsers: search,
           value:event.target.value
         })
-      }
+      }  
+       
 
-   
-
-      const cards =  oldUsers.map(element => {
+      const cards = oldUsers.map(element => {
+  
         return ( 
         <div className="cards">
           <div className="names">
             {element.login}
           </div>
           <img className="ava" src={element.avatar_url}/>
-          <button>more information</button>
+          <Link to={`/${element.id}`}>
+            <button
+             className="more-information" 
+            >
+              more information 
+            </button>
+          </Link>
+
+          <Route
+            path={`/${element.id}`}
+            render={(props) =>
+              <UserInformation
+                {...props}
+                items={this.state}
+                current={element}
+              />
+            }
+          />
         </div>
         )
       })
 
       return (
-        <div className="wrapper">
-          <div className = "blockCard">
-              <label>
-                  <input 
-                    className="search"
-                    type="text" 
-                    value={this.state.value} 
-                    onChange={handlerInputValue}
-                  />
-                  Search
-              </label>
-            {cards}
-          </div>
-        </div>
+        <BrowserRouter>
+          <div className="wrapper">
+            <div className = "blockCard">
+                <label>
+                    <input 
+                      className="search"
+                      type="text" 
+                      value={this.state.value} 
+                      onChange={handlerInputValue}
+                    />
+                    Search
+                </label>
+              {cards}
+            </div>
+          </div> 
+          <Redirect exact from="/" to="git-users" />
+        </BrowserRouter>
+     
       );
     }
   }
