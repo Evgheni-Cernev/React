@@ -55,16 +55,16 @@ class App extends Component {
             {element.login}
           </div>
           <img className="ava" src={element.avatar_url}/>
-          <Link to={`/${element.id}`}>
+          <Link to={`/id${element.id}`}>
             <button
              className="more-information" 
             >
               more information 
             </button>
           </Link>
-
           <Route
-            path={`/${element.id}`}
+            exact
+            path={`/id${element.id}`}
             render={(props) =>
               <UserInformation
                 {...props}
@@ -93,9 +93,7 @@ class App extends Component {
               {cards}
             </div>
           </div> 
-          <Redirect exact from="/" to="git-users" />
         </BrowserRouter>
-     
       );
     }
   }
